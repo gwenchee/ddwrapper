@@ -1,0 +1,29 @@
+# Demonstrate Dakota script interface to Python script
+# Multidimensional parameter study 
+
+environment, 
+	tabular_data 
+		tabular_data_file = 'OAT_CoolingTime.dat'
+		# saves input and outputs to dat file 
+
+method,						
+	multidim_parameter_study # type of analysis
+    partitions = 4 # No. of intervals 
+
+model, 
+single
+
+variables,					
+	continuous_design = 1			
+    lower_bounds      0     
+    upper_bounds      4     
+    descriptors       'CT'     
+
+interface,							
+	fork							
+	  analysis_drivers = 'python.exe OAT_CoolingTime.py'
+
+responses,				
+	num_objective_functions = 1	# no. of output variables 
+	no_gradients
+	no_hessians
