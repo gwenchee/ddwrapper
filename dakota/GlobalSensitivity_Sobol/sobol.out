@@ -1,0 +1,167 @@
+Dakota version 6.10 released May 15 2019.
+Repository revision c963f6ca (2019-05-14) built May 14 2019 14:03:03.
+Running serial Dakota executable in serial mode.
+Start time: Wed Aug  7 17:01:51 2019
+
+-----------------------
+Begin DAKOTA input file
+.\sobol.in
+-----------------------
+
+# Dakota Input File: morris_ps_moat.in
+
+environment
+  tabular_data
+    tabular_data_file 'sobol.dat'
+
+method
+  nond_sampling
+    sample_type 
+      lhs
+    variance_based_decomp
+    samples = 1
+
+variables,					
+	#uniform_uncertain = 3		
+    #lower_bounds       2       162       1          
+    #upper_bounds       8       164       3
+    
+    discrete_interval_uncertain = 3
+       num_intervals = 2 2 2
+       lower_bounds       2 5      162 163      1 2         
+       upper_bounds       5 8      163 164      2 3
+       descriptors       'FS'     'TY'          'CT' 
+
+interface
+  fork 
+    analysis_drivers = 'python.exe sobol.py'
+    
+responses
+  num_response_functions = 3
+  no_gradients
+  no_hessians
+---------------------
+End DAKOTA input file
+---------------------
+
+Using Dakota input file '.\sobol.in'
+Writing new restart file 'dakota.rst'.
+
+>>>>> Executing environment.
+
+>>>>> Running random_sampling iterator.
+
+NonD lhs Samples = 1 Seed (system-generated) = 869266
+
+NonD lhs Samples = 1 Seed not reset from previous LHS execution
+
+---------------------
+Begin Evaluation    1
+---------------------
+Parameters for evaluation 1:
+                                     4 FS
+                                   164 TY
+                                     2 CT
+
+blocking fork: python.exe sobol.py C:\Users\gchee\AppData\Local\Temp\dakota_params_c1c4f8f9 C:\Users\gchee\AppData\Local\Temp\dakota_results_fa25025a
+
+Active response data for evaluation 1:
+Active set vector = { 1 1 1 }
+                      1.8800786360e+02 response_fn_1
+                      5.1978139802e+02 response_fn_2
+                      1.7868767329e+01 response_fn_3
+
+
+
+---------------------
+Begin Evaluation    2
+---------------------
+Parameters for evaluation 2:
+                                     5 FS
+                                   162 TY
+                                     2 CT
+
+blocking fork: python.exe sobol.py C:\Users\gchee\AppData\Local\Temp\dakota_params_40bb9ac1 C:\Users\gchee\AppData\Local\Temp\dakota_results_16f39fa7
+
+Active response data for evaluation 2:
+Active set vector = { 1 1 1 }
+                      2.0017881857e+02 response_fn_1
+                      5.1978139802e+02 response_fn_2
+                      1.8314992827e+01 response_fn_3
+
+
+
+---------------------
+Begin Evaluation    3
+---------------------
+Parameters for evaluation 3:
+                                     4 FS
+                                   162 TY
+                                     2 CT
+
+blocking fork: python.exe sobol.py C:\Users\gchee\AppData\Local\Temp\dakota_params_b9ad19a6 C:\Users\gchee\AppData\Local\Temp\dakota_results_10dedfdb
+
+Active response data for evaluation 3:
+Active set vector = { 1 1 1 }
+                      2.0017881857e+02 response_fn_1
+                      5.1978139802e+02 response_fn_2
+                      1.8314992827e+01 response_fn_3
+
+
+
+---------------------
+Begin Evaluation    4
+---------------------
+Parameters for evaluation 4:
+                                     5 FS
+                                   164 TY
+                                     2 CT
+
+blocking fork: python.exe sobol.py C:\Users\gchee\AppData\Local\Temp\dakota_params_ab6fc302 C:\Users\gchee\AppData\Local\Temp\dakota_results_99bec8e7
+
+Active response data for evaluation 4:
+Active set vector = { 1 1 1 }
+                      1.8800786360e+02 response_fn_1
+                      5.1978139802e+02 response_fn_2
+                      1.7868767329e+01 response_fn_3
+
+
+
+---------------------
+Begin Evaluation    5
+---------------------
+Parameters for evaluation 5:
+                                     5 FS
+                                   162 TY
+                                     2 CT
+
+Duplication detected: analysis_drivers not invoked.
+
+Active response data retrieved from database:
+Active set vector = { 1 1 1 }
+                      2.0017881857e+02 response_fn_1
+                      5.1978139802e+02 response_fn_2
+                      1.8314992827e+01 response_fn_3
+
+
+<<<<< Function evaluation summary: 5 total (4 new, 1 duplicate)
+
+Global sensitivity indices for each response function:
+response_fn_1 Sobol' indices:
+                                  Main             Total
+                      0.0000000000e+00  0.0000000000e+00 FS
+                      2.4000000000e+00  2.0000000000e+00 TY
+                      0.0000000000e+00  0.0000000000e+00 CT
+response_fn_2 Sobol' indices:
+                                  Main             Total
+response_fn_3 Sobol' indices:
+                                  Main             Total
+                      0.0000000000e+00  0.0000000000e+00 FS
+                      2.4000000000e+00  2.0000000000e+00 TY
+                      0.0000000000e+00  0.0000000000e+00 CT
+
+<<<<< Iterator random_sampling completed.
+<<<<< Environment execution completed.
+DAKOTA execution time in seconds:
+  Total CPU        =    48473.2 [parent =    48473.2, child = -7.27596e-12]
+  Total wall clock =    48473.9

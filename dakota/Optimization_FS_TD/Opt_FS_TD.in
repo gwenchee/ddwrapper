@@ -1,0 +1,29 @@
+# Demonstrate Dakota script interface to Python script
+# Multidimensional parameter study 
+
+environment, 
+	tabular_data 
+		tabular_data_file = 'Opt_FS_TD.dat'
+		# saves input and outputs to dat file 
+
+method,						
+	multidim_parameter_study # type of analysis
+    partitions = 2 2 # No. of intervals 
+
+model, 
+single
+
+variables,					
+	continuous_design = 2			
+    lower_bounds       2       162          
+    upper_bounds       8       164
+    descriptors       'FS'     'TY'     
+
+interface,							
+	fork							
+	  analysis_drivers = 'python.exe Opt_FS_TD.py'
+
+responses,				
+	num_objective_functions = 3	# no. of output variables 
+	no_gradients
+	no_hessians
